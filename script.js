@@ -18,6 +18,14 @@ let prevPage = 3;
 let lastUrl = "";
 let totalPages = 100;
 
+const displayLoading = () => {
+  loading.style.display = "flex";
+};
+
+const hideLoading = () => {
+  loading.style.display = "none";
+};
+
 function getMovies(url) {
   lastUrl = url;
   fetch(url)
@@ -50,7 +58,6 @@ function getMovies(url) {
 
 function showMovies(data) {
   main.innerHTML = "";
-
   data.forEach((movie) => {
     const { title, poster_path, release_date, popularity, overview } = movie;
     const movieEl = document.createElement("div");
@@ -94,7 +101,6 @@ getMovies(API_URL);
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const searchTerm = search.value;
-
   if (searchTerm) {
     getMovies(searchURL + "&query=" + searchTerm);
   } else {
@@ -112,4 +118,13 @@ prev.addEventListener("click", () => {
   if (prevPage > 0) {
     pageCall(prevPage);
   }
+});
+
+let spinner = document.querySelector(".loading");
+
+window.addEventListener("load", () => {
+  spinner.classList.add("hide");
+  setTimeout(() => {
+    spinner.remove();
+  }, 5000);
 });

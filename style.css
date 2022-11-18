@@ -97,3 +97,37 @@ main {
     font-size: 20px;
     font-weight: 600;
 }
+
+
+/* spinner */
+
+.spinner {
+    display: flex;
+    justify-content: center;
+}
+
+.loading {
+    align-items: center;
+    height: 100%;
+}
+
+.spinner::after {
+    content: "";
+    width: 500px;
+    height: 500px;
+    border: 10px solid #dddddd;
+    border-top-color: #dc56c5;
+    border-bottom-color:#dc56c5;
+    border-radius: 50%;
+    animation: loading 1s ease infinite;
+}
+
+.hide {
+  opacity: 0;
+}
+
+@keyframes loading {
+    to {
+        transform: rotate(1turn);
+    }
+}
