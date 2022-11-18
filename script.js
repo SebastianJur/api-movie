@@ -96,6 +96,7 @@ function pageCall(page) {
   }
 }
 
+
 getMovies(API_URL);
 
 form.addEventListener("submit", (e) => {
